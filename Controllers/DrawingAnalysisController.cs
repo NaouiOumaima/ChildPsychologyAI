@@ -8,18 +8,81 @@ namespace ChildPsychologyAI.Controllers;
 [Route("api/[controller]")]
 public class DrawingAnalysisController : ControllerBase
 {
-    private readonly IImageProcessingService _imageProcessingService;
-    private readonly IColorAnalysisService _colorAnalysisService;
+    private readonly IDrawingAnalysisService _drawingAnalysisService;
+    private readonly IFileStorageService _fileStorageService;
     private readonly ILogger<DrawingAnalysisController> _logger;
 
     public DrawingAnalysisController(
-        IImageProcessingService imageProcessingService,
-        IColorAnalysisService colorAnalysisService,
+        IDrawingAnalysisService drawingAnalysisService,
+        IFileStorageService fileStorageService,
         ILogger<DrawingAnalysisController> logger)
     {
-        _imageProcessingService = imageProcessingService;
-        _colorAnalysisService = colorAnalysisService;
+        _drawingAnalysisService = drawingAnalysisService;
+        _fileStorageService = fileStorageService;
         _logger = logger;
+    }
+
+    [HttpPost("analyze")]
+    public async Task<ActionResult<DrawingAnalysis>> AnalyzeDrawing(
+        [FromForm] AnalyzeDrawingRequest request)
+    {
+        try
+        {
+            if (request.File == null || request.File.Length == 0)
+                return BadRequest("Aucun fichier fourni");
+
+            // Vérifier la taille du fichier (max 10MB)
+            if (request.File.Length > 10 * 1024 * 1024)
+                return BadRequest("Fichier trop volumineux (max 10MB)");
+
+            // Sauvegarder le fichier
+            var filePath = await _fileStorageService.SaveFileAsync(request.File);
+
+            // Analyser le dessin
+            var analysis = await _drawingAnalysisService.AnalyzeDrawingAsync(filePath, request.ChildId);
+
+            _logger.LogInformation("Analyse de dessin complétée pour l'enfant {ChildId}", request.ChildId);
+
+            return Ok(analysis);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erreur lors de l'analyse du dessin");
+            return StatusCode(500, "Erreur interne du serveur");
+        }
+    }
+
+    [HttpGet("child/{childId}")]
+    public async Task<ActionResult<List<DrawingAnalysis>>> GetChildAnalyses(string childId)
+    {
+        try
+        {
+            var analyses = await _drawingAnalysisService.GetAnalysesByChildIdAsync(childId);
+            return Ok(analyses);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erreur lors de la récupération des analyses pour l'enfant {ChildId}", childId);
+            return StatusCode(500, "Erreur interne du serveur");
+        }
+    }
+
+    [HttpGet("{analysisId}")]
+    public async Task<ActionResult<DrawingAnalysis>> GetAnalysis(string analysisId)
+    {
+        try
+        {
+            var analysis = await _drawingAnalysisService.GetAnalysisByIdAsync(analysisId);
+            if (analysis == null)
+                return NotFound();
+
+            return Ok(analysis);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Erreur lors de la récupération de l'analyse {AnalysisId}", analysisId);
+            return StatusCode(500, "Erreur interne du serveur");
+        }
     }
 
     [HttpPost("test-color-analysis")]
@@ -30,19 +93,14 @@ public class DrawingAnalysisController : ControllerBase
             if (file == null || file.Length == 0)
                 return BadRequest("Aucun fichier fourni");
 
-            // Sauvegarder temporairement le fichier
-            var tempPath = Path.GetTempFileName();
-            using (var stream = new FileStream(tempPath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
+            var filePath = await _fileStorageService.SaveFileAsync(file);
 
-            // Charger et analyser l'image
-            var image = await _imageProcessingService.LoadImageAsync(tempPath);
-            var colorAnalysis = await _colorAnalysisService.AnalyzeColorsAsync(image);
+            // Utiliser ImageProcessingService directement
+            var imageProcessingService = HttpContext.RequestServices.GetRequiredService<IImageProcessingService>();
+            var colorAnalysisService = HttpContext.RequestServices.GetRequiredService<IColorAnalysisService>();
 
-            // Nettoyer le fichier temporaire
-            System.IO.File.Delete(tempPath);
+            var image = await imageProcessingService.LoadImageAsync(filePath);
+            var colorAnalysis = await colorAnalysisService.AnalyzeColorsAsync(image);
 
             return Ok(colorAnalysis);
         }
@@ -52,10 +110,6 @@ public class DrawingAnalysisController : ControllerBase
             return StatusCode(500, "Erreur interne du serveur");
         }
     }
-
-    [HttpGet("test")]
-    public IActionResult Test()
-    {
-        return Ok("API ChildPsychologyAI fonctionne !");
-    }
 }
+
+public record AnalyzeDrawingRequest(IFormFile File, string ChildId);

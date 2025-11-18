@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChildPsychologyAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8c084c3378d87d61513ba6d2e18d71dbc880764")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0eaaab31db4a213ad5556c6e4c0ee5eb98ad7073")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChildPsychologyAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChildPsychologyAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
