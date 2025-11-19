@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\services\\analysis\\coloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:services\\analysis\\coloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\interfaces\\icoloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:interfaces\\icoloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 514,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +27,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ColorAnalysisService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\ColorAnalysisService.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\ColorAnalysisService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\ColorAnalysisService.cs",
+              "RelativeToolTip": "Services\\Analysis\\ColorAnalysisService.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAgwKYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T11:47:58.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IColorAnalysisService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IColorAnalysisService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IColorAnalysisService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IColorAnalysisService.cs",
+              "RelativeToolTip": "Interfaces\\IColorAnalysisService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T11:47:48.088Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -6,17 +6,21 @@ namespace ChildPsychologyAI.Services.Analysis;
 
 public class ColorAnalysisService : IColorAnalysisService
 {
-    private static readonly Dictionary<string, Scalar> ColorRanges = new()
+    private static readonly Dictionary<string, (Scalar lower, Scalar upper)> ColorRanges = new()
     {
-        ["red"] = new Scalar(0, 0, 100),
-        ["blue"] = new Scalar(100, 0, 0),
-        ["green"] = new Scalar(0, 100, 0),
-        ["yellow"] = new Scalar(0, 255, 255),
-        ["black"] = new Scalar(0, 0, 0),
-        ["white"] = new Scalar(255, 255, 255),
-        ["purple"] = new Scalar(128, 0, 128),
-        ["orange"] = new Scalar(0, 165, 255),
-        ["brown"] = new Scalar(42, 42, 165)
+        // Format HSV: (Hue, Saturation, Value)
+        ["red"] = (new Scalar(0, 100, 100), new Scalar(10, 255, 255)),
+        ["red2"] = (new Scalar(170, 100, 100), new Scalar(180, 255, 255)), // Rouge a deux plages
+        ["orange"] = (new Scalar(10, 100, 100), new Scalar(20, 255, 255)),
+        ["yellow"] = (new Scalar(20, 100, 100), new Scalar(30, 255, 255)),
+        ["green"] = (new Scalar(40, 100, 100), new Scalar(80, 255, 255)),
+        ["blue"] = (new Scalar(100, 100, 100), new Scalar(130, 255, 255)),
+        ["purple"] = (new Scalar(130, 100, 100), new Scalar(170, 255, 255)),
+        ["pink"] = (new Scalar(140, 50, 100), new Scalar(170, 255, 255)),
+        ["brown"] = (new Scalar(10, 100, 50), new Scalar(20, 255, 150)),
+        ["black"] = (new Scalar(0, 0, 0), new Scalar(180, 255, 50)),      // Valeur basse
+        ["white"] = (new Scalar(0, 0, 200), new Scalar(180, 50, 255)),    // Saturation basse
+        ["gray"] = (new Scalar(0, 0, 50), new Scalar(180, 50, 200))
     };
 
     public async Task<ColorAnalysis> AnalyzeColorsAsync(Mat image)
@@ -26,17 +30,52 @@ public class ColorAnalysisService : IColorAnalysisService
             var colorDistribution = new Dictionary<string, double>();
             var totalPixels = image.Width * image.Height;
 
-            // Convertir en HSV pour une meilleure analyse des couleurs
+            if (totalPixels == 0)
+                return new ColorAnalysis();
+
+            // Convertir en HSV
             var hsv = new Mat();
             Cv2.CvtColor(image, hsv, ColorConversionCodes.BGR2HSV);
 
+            // Masque pour éviter les doublons
+            var usedPixels = new Mat(hsv.Size(), MatType.CV_8UC1, Scalar.All(0));
+
             foreach (var (colorName, range) in ColorRanges)
             {
-                var mask = CreateColorMask(hsv, colorName);
-                var percentage = (Cv2.CountNonZero(mask) / (double)totalPixels) * 100;
+                var mask = new Mat();
+                Cv2.InRange(hsv, range.lower, range.upper, mask);
 
-                if (percentage > 1.0) // Ignorer les couleurs < 1%
+                // Exclure les pixels déjà comptés
+                var exclusiveMask = new Mat();
+                Cv2.BitwiseAnd(mask, usedPixels, exclusiveMask);
+                Cv2.Subtract(mask, exclusiveMask, mask);
+
+                var pixelCount = Cv2.CountNonZero(mask);
+                var percentage = (pixelCount / (double)totalPixels) * 100;
+
+                if (percentage > 0.5) // Seuil à 0.5% pour éviter le bruit
+                {
                     colorDistribution[colorName] = Math.Round(percentage, 2);
+
+                    // Marquer ces pixels comme utilisés
+                    Cv2.BitwiseOr(usedPixels, mask, usedPixels);
+                }
+            }
+
+            // Gérer les pixels restants comme "other"
+            var remainingPixels = totalPixels - Cv2.CountNonZero(usedPixels);
+            var remainingPercentage = (remainingPixels / (double)totalPixels) * 100;
+
+            if (remainingPercentage > 0.5)
+            {
+                colorDistribution["other"] = Math.Round(remainingPercentage, 2);
+            }
+
+            // Fusionner red et red2
+            if (colorDistribution.ContainsKey("red2"))
+            {
+                colorDistribution["red"] = colorDistribution.GetValueOrDefault("red", 0) + colorDistribution["red2"];
+                colorDistribution.Remove("red2");
             }
 
             var dominantColor = colorDistribution.OrderByDescending(x => x.Value).FirstOrDefault();
@@ -53,49 +92,43 @@ public class ColorAnalysisService : IColorAnalysisService
         });
     }
 
-    private Mat CreateColorMask(Mat hsv, string colorName)
-    {
-        var mask = new Mat();
-        var (lower, upper) = GetColorRange(colorName);
-
-        Cv2.InRange(hsv, lower, upper, mask);
-        return mask;
-    }
-
-    private (Scalar lower, Scalar upper) GetColorRange(string colorName)
-    {
-        return colorName.ToLower() switch
-        {
-            "red" => (new Scalar(0, 120, 70), new Scalar(10, 255, 255)),
-            "blue" => (new Scalar(100, 150, 0), new Scalar(140, 255, 255)),
-            "green" => (new Scalar(40, 40, 40), new Scalar(80, 255, 255)),
-            "yellow" => (new Scalar(20, 100, 100), new Scalar(30, 255, 255)),
-            _ => (new Scalar(0, 0, 0), new Scalar(180, 255, 255))
-        };
-    }
-
     private double CalculateColorIntensity(Mat image)
     {
-        var lab = new Mat();
-        Cv2.CvtColor(image, lab, ColorConversionCodes.BGR2Lab);
+        var hsv = new Mat();
+        Cv2.CvtColor(image, hsv, ColorConversionCodes.BGR2HSV);
 
-        Cv2.Split(lab, out var channels);
-        var lightness = channels[0];
+        Cv2.Split(hsv, out var channels);
+        var saturation = channels[1];
+        var value = channels[2];
 
-        return lightness.Mean().Val0 / 255.0;
+        var avgSaturation = saturation.Mean().Val0 / 255.0;
+        var avgValue = value.Mean().Val0 / 255.0;
+
+        return (avgSaturation + avgValue) / 2.0;
     }
 
     private List<string> InterpretColors(Dictionary<string, double> colorDistribution)
     {
         var interpretations = new List<string>();
 
-        foreach (var (color, percentage) in colorDistribution)
+        // Prendre seulement les 3 couleurs principales
+        var topColors = colorDistribution
+            .OrderByDescending(x => x.Value)
+            .Take(3)
+            .ToList();
+
+        foreach (var (color, percentage) in topColors)
         {
-            if (percentage > 30)
-            {
-                interpretations.Add(GetColorInterpretation(color, percentage));
-            }
+            interpretations.Add(GetColorInterpretation(color, percentage));
         }
+
+        // Analyse globale
+        if (colorDistribution.ContainsKey("black") && colorDistribution["black"] > 50)
+            interpretations.Add("Prédominance de noir: nécessite attention particulière");
+        else if (colorDistribution.Count == 1)
+            interpretations.Add("Dessin monochromatique: expression focalisée");
+        else if (colorDistribution.Count >= 5)
+            interpretations.Add("Palette colorée variée: expression émotionnelle riche");
 
         return interpretations;
     }
@@ -104,18 +137,31 @@ public class ColorAnalysisService : IColorAnalysisService
     {
         return color.ToLower() switch
         {
-            "red" => percentage > 50 ?
-                "Utilisation importante de rouge: peut indiquer de la colère ou une forte énergie" :
-                "Présence de rouge: énergie, passion",
+            "red" => percentage > 30 ?
+                "Rouge dominant: énergie intense, passion" :
+                "Présence de rouge: énergie, vitalité",
 
-            "blue" => "Couleur bleue: calme, sérénité, ou parfois tristesse",
+            "blue" => percentage > 30 ?
+                "Bleu dominant: calme, sérénité" :
+                "Présence de bleu: paix, tranquillité",
+
             "black" => percentage > 20 ?
-                "Utilisation importante de noir: possible anxiété ou tristesse" :
-                "Présence de noir: peut indiquer de l'anxiété",
+                "Noir important: possible anxiété ou tristesse" :
+                "Traces de noir: peut indiquer de l'anxiété",
 
-            "yellow" => "Couleur jaune: joie, optimisme, énergie positive",
-            "green" => "Couleur verte: équilibre, croissance, stabilité",
-            _ => $"Couleur {color}: signification à analyser dans le contexte"
+            "white" => percentage > 30 ?
+                "Blanc dominant: pureté ou vide émotionnel" :
+                "Présence de blanc: clarté, innocence",
+
+            "yellow" => "Jaune: joie, optimisme",
+            "green" => "Vert: équilibre, croissance",
+            "orange" => "Orange: créativité, enthousiasme",
+            "purple" => "Violet: imagination, spiritualité",
+            "pink" => "Rose: tendresse, affection",
+            "brown" => "Marron: stabilité, sécurité",
+            "gray" => "Gris: neutralité, maturité",
+            "other" => "Couleurs variées: palette complexe",
+            _ => $"Couleur {color}: signification contextuelle"
         };
     }
 }
