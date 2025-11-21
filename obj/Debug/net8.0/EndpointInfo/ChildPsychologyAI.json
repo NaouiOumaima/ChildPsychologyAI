@@ -273,6 +273,110 @@
         }
       }
     },
+    "/api/DrawingAnalysis/analyze-complete": {
+      "post": {
+        "tags": [
+          "DrawingAnalysis"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "ChildId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "ChildId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompleteAnalysisResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompleteAnalysisResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompleteAnalysisResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DrawingAnalysis/analyze-quick": {
+      "post": {
+        "tags": [
+          "DrawingAnalysis"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickAnalysisResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickAnalysisResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickAnalysisResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/DrawingAnalysis/child/{childId}": {
       "get": {
         "tags": [
@@ -402,6 +506,55 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ColorAnalysis"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/DrawingAnalysis/test-shapes": {
+      "post": {
+        "tags": [
+          "DrawingAnalysis"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvancedShapeAnalysis"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvancedShapeAnalysis"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdvancedShapeAnalysis"
                 }
               }
             }
@@ -625,6 +778,68 @@
   },
   "components": {
     "schemas": {
+      "AdvancedEmotionalAnalysis": {
+        "type": "object",
+        "properties": {
+          "emotionScores": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "format": "double"
+            },
+            "nullable": true
+          },
+          "dominantEmotion": {
+            "type": "string",
+            "nullable": true
+          },
+          "emotionalState": {
+            "type": "string",
+            "nullable": true
+          },
+          "indicators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmotionalIndicator"
+            },
+            "nullable": true
+          },
+          "riskAssessment": {
+            "$ref": "#/components/schemas/RiskAssessment"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdvancedShapeAnalysis": {
+        "type": "object",
+        "properties": {
+          "shapes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetectedShape"
+            },
+            "nullable": true
+          },
+          "symbols": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetectedSymbol"
+            },
+            "nullable": true
+          },
+          "composition": {
+            "$ref": "#/components/schemas/CompositionAnalysis"
+          },
+          "psychologicalIndicators": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Child": {
         "type": "object",
         "properties": {
@@ -671,6 +886,27 @@
         },
         "additionalProperties": false
       },
+      "ChildStatusResponse": {
+        "type": "object",
+        "properties": {
+          "mood": {
+            "type": "string",
+            "nullable": true
+          },
+          "confidence": {
+            "type": "string",
+            "nullable": true
+          },
+          "overallState": {
+            "type": "string",
+            "nullable": true
+          },
+          "isConcerning": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "ColorAnalysis": {
         "type": "object",
         "properties": {
@@ -691,6 +927,64 @@
             "format": "double"
           },
           "colorInterpretations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompleteAnalysisResponse": {
+        "type": "object",
+        "properties": {
+          "basicAnalysis": {
+            "$ref": "#/components/schemas/DrawingAnalysis"
+          },
+          "advancedShapes": {
+            "$ref": "#/components/schemas/AdvancedShapeAnalysis"
+          },
+          "advancedEmotions": {
+            "$ref": "#/components/schemas/AdvancedEmotionalAnalysis"
+          },
+          "finalSummary": {
+            "type": "string",
+            "nullable": true
+          },
+          "childStatus": {
+            "$ref": "#/components/schemas/ChildStatusResponse"
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "analysisTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CompositionAnalysis": {
+        "type": "object",
+        "properties": {
+          "balance": {
+            "type": "string",
+            "nullable": true
+          },
+          "spaceUsage": {
+            "type": "string",
+            "nullable": true
+          },
+          "pressure": {
+            "type": "string",
+            "nullable": true
+          },
+          "compositionIndicators": {
             "type": "array",
             "items": {
               "type": "string"
@@ -746,6 +1040,57 @@
           },
           "password": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetectedShape": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "averageSize": {
+            "type": "number",
+            "format": "double"
+          },
+          "position": {
+            "type": "string",
+            "nullable": true
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetectedSymbol": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "complexity": {
+            "type": "string",
+            "nullable": true
+          },
+          "characteristics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -822,6 +1167,105 @@
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmotionalIndicator": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "confidence": {
+            "type": "number",
+            "format": "double"
+          },
+          "emotionalCorrelation": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuickAnalysisResponse": {
+        "type": "object",
+        "properties": {
+          "dominantColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "colorInterpretations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "detectedShapes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "detectedSymbols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "dominantEmotion": {
+            "type": "string",
+            "nullable": true
+          },
+          "emotionalState": {
+            "type": "string",
+            "nullable": true
+          },
+          "riskLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "quickSummary": {
+            "type": "string",
+            "nullable": true
+          },
+          "requiresAttention": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RiskAssessment": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string",
+            "nullable": true
+          },
+          "riskFactors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "recommendations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "requiresAttention": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

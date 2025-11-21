@@ -18,8 +18,8 @@ builder.Services.AddScoped<IImageProcessingService, ImageProcessingService>();
 builder.Services.AddScoped<IColorAnalysisService, ColorAnalysisService>();
 builder.Services.AddScoped<IDrawingAnalysisService, DrawingAnalysisService>();
 builder.Services.AddScoped<IFileStorageService, LocalFileStorageService>();
-
-// NOUVEAUX SERVICES - Gestion des utilisateurs et enfants
+builder.Services.AddScoped<IAdvancedShapeDetectionService, AdvancedShapeDetectionService>();
+builder.Services.AddScoped<IAdvancedEmotionalAnalysisService, AdvancedEmotionalAnalysisService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IChildService, ChildService>();
 

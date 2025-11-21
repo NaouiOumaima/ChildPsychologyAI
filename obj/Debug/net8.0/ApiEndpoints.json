@@ -183,6 +183,63 @@
   },
   {
     "ContainingType": "ChildPsychologyAI.Controllers.DrawingAnalysisController",
+    "Method": "AnalyzeComplete",
+    "RelativePath": "api/DrawingAnalysis/analyze-complete",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ChildId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ChildPsychologyAI.Controllers.CompleteAnalysisResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ChildPsychologyAI.Controllers.DrawingAnalysisController",
+    "Method": "AnalyzeQuick",
+    "RelativePath": "api/DrawingAnalysis/analyze-quick",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ChildPsychologyAI.Controllers.QuickAnalysisResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ChildPsychologyAI.Controllers.DrawingAnalysisController",
     "Method": "GetChildAnalyses",
     "RelativePath": "api/DrawingAnalysis/child/{childId}",
     "HttpMethod": "GET",
@@ -224,6 +281,32 @@
     "ReturnTypes": [
       {
         "Type": "ChildPsychologyAI.Models.Entities.ColorAnalysis",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ChildPsychologyAI.Controllers.DrawingAnalysisController",
+    "Method": "TestShapes",
+    "RelativePath": "api/DrawingAnalysis/test-shapes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ChildPsychologyAI.Models.Entities.AdvancedShapeAnalysis",
         "MediaTypes": [
           "text/plain",
           "application/json",

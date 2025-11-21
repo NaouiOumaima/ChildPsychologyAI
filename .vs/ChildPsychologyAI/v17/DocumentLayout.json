@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\services\\analysis\\coloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:services\\analysis\\coloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\controllers\\drawinganalysiscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:controllers\\drawinganalysiscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\interfaces\\icoloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:interfaces\\icoloranalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\services\\analysis\\advancedemotionalanalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:services\\analysis\\advancedemotionalanalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\services\\analysis\\advancedshapedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:services\\analysis\\advancedshapedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\interfaces\\iadvancedemotionalanalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:interfaces\\iadvancedemotionalanalysisservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\interfaces\\interface.csiadvancedshapedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:interfaces\\interface.csiadvancedshapedetectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\models\\entities\\completedrawinganalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:models\\entities\\completedrawinganalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\models\\entities\\advancedemotionalanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:models\\entities\\advancedemotionalanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\models\\entities\\advancedshapeanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:models\\entities\\advancedshapeanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|c:\\users\\mayma\\desktop\\ia learning\\childpsychologyai\\childpsychologyai\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71E00A83-3A9A-4BD0-9C26-5FE98574216A}|ChildPsychologyAI.csproj|solutionrelative:models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +63,131 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ColorAnalysisService.cs",
-              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\ColorAnalysisService.cs",
-              "RelativeDocumentMoniker": "Services\\Analysis\\ColorAnalysisService.cs",
-              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\ColorAnalysisService.cs",
-              "RelativeToolTip": "Services\\Analysis\\ColorAnalysisService.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAgwKYAAAABAAAAAAAAAA==",
+              "Title": "DrawingAnalysisController.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Controllers\\DrawingAnalysisController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DrawingAnalysisController.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Controllers\\DrawingAnalysisController.cs",
+              "RelativeToolTip": "Controllers\\DrawingAnalysisController.cs",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAowGgBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T11:47:58.129Z",
+              "WhenOpened": "2025-11-21T20:54:11.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdvancedShapeDetectionService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\AdvancedShapeDetectionService.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\AdvancedShapeDetectionService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\AdvancedShapeDetectionService.cs",
+              "RelativeToolTip": "Services\\Analysis\\AdvancedShapeDetectionService.cs",
+              "ViewState": "AgIAAOYBAAAAAAAAAAAowAgCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:25:25.613Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IColorAnalysisService.cs",
-              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IColorAnalysisService.cs",
-              "RelativeDocumentMoniker": "Interfaces\\IColorAnalysisService.cs",
-              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IColorAnalysisService.cs",
-              "RelativeToolTip": "Interfaces\\IColorAnalysisService.cs",
+              "Title": "AdvancedEmotionalAnalysisService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\AdvancedEmotionalAnalysisService.cs",
+              "RelativeDocumentMoniker": "Services\\Analysis\\AdvancedEmotionalAnalysisService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Services\\Analysis\\AdvancedEmotionalAnalysisService.cs",
+              "RelativeToolTip": "Services\\Analysis\\AdvancedEmotionalAnalysisService.cs",
+              "ViewState": "AgIAANcBAAAAAAAAAAAowPkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:25:47.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:27:09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAdvancedEmotionalAnalysisService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IAdvancedEmotionalAnalysisService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\IAdvancedEmotionalAnalysisService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\IAdvancedEmotionalAnalysisService.cs",
+              "RelativeToolTip": "Interfaces\\IAdvancedEmotionalAnalysisService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:25:05.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Interface.csIAdvancedShapeDetectionService.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\Interface.csIAdvancedShapeDetectionService.cs",
+              "RelativeDocumentMoniker": "Interfaces\\Interface.csIAdvancedShapeDetectionService.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Interfaces\\Interface.csIAdvancedShapeDetectionService.cs",
+              "RelativeToolTip": "Interfaces\\Interface.csIAdvancedShapeDetectionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:24:45.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CompleteDrawingAnalysis.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\CompleteDrawingAnalysis.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\CompleteDrawingAnalysis.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\CompleteDrawingAnalysis.cs",
+              "RelativeToolTip": "Models\\Entities\\CompleteDrawingAnalysis.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:24:19.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdvancedEmotionalAnalysis.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\AdvancedEmotionalAnalysis.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\AdvancedEmotionalAnalysis.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\AdvancedEmotionalAnalysis.cs",
+              "RelativeToolTip": "Models\\Entities\\AdvancedEmotionalAnalysis.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:23:57.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdvancedShapeAnalysis.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\AdvancedShapeAnalysis.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\AdvancedShapeAnalysis.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\AdvancedShapeAnalysis.cs",
+              "RelativeToolTip": "Models\\Entities\\AdvancedShapeAnalysis.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T20:23:31.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Models\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\mayma\\Desktop\\IA learning\\ChildPsychologyAI\\ChildPsychologyAI\\Models\\Entities\\User.cs",
+              "RelativeToolTip": "Models\\Entities\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T11:47:48.088Z",
+              "WhenOpened": "2025-11-21T20:22:22.741Z",
               "EditorCaption": ""
             }
           ]
